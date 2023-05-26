@@ -4,10 +4,10 @@ class Solution:
             return False 
         sSet, tSet = {}, {}
         for ch in s:
-            n = sSet.get(ch) if sSet.get(ch) != None else 0
+            n = sSet.get(ch, 0)
             sSet.update({ch:(n+1)})
         for ch in t:
-            n = tSet.get(ch) if tSet.get(ch) != None else 0
+            n = tSet.get(ch, 0)
             tSet.update({ch:(n+1)})
         if sSet == tSet:
             return True
