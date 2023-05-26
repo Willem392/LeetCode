@@ -5,8 +5,7 @@ class Solution:
         for n in nums:
             count = 0
             if n - 1 not in s:
-                while n in s:
+                while n + count in s:
                     count += 1
-                    n += 1
                 longestCount = max(count, longestCount)
         return longestCount
