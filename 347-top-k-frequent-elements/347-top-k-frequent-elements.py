@@ -12,11 +12,9 @@ class Solution:
                 res.append(n)
                 if len(res) == k:
                     return res"""
-            
-            
         l, res = [], []
-        for elem in freq:
-            l.append([freq[elem], elem])
+        for key, val in freq.items():
+            l.append([val, key])
         l = sorted(l)[::-1]
         for i in range(k):
             res.append(l[i][1])
