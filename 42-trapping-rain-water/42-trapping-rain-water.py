@@ -1,17 +1,12 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        s = set()
-        for i in range(len(height)):
-            s.add((height[i], i))
-        l = sorted([*s])[::-1]
-        leftTallest = height[0]
-        rightTallest = l[0][0]
+        leftTallest, rightTallest = [height[0]]*len(height), [height[len(height)-1]]*len(height)
+        for i in range(1, len(height)):
+            leftTallest[i] = max(leftTallest[i - 1], height[i])
+        for i in range(len(height)-2, -1, -1):
+            rightTallest[i] = max(height[i], rightTallest[i + 1])
         total = 0
         for i in range(1, len(height)-1):
-            leftTallest = max(leftTallest, height[i - 1])
-            while i >= l[0][1]:
-                l.pop(0)
-            rightTallest = l[0][0]
-            total += min(leftTallest, rightTallest) - height[i] if min(leftTallest, rightTallest) - height[i] > 0 else 0
+            total += min(leftTallest[i-1], rightTallest[i+1]) - height[i] if min(leftTallest[i-1], rightTallest[i+1]) - height[i] > 0 else 0
         return total
             
