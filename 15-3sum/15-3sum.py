@@ -1,16 +1,20 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        s = set()
-        for i in nums:
-            target = -i
-            tempNums = [*nums]
-            tempNums.remove(i)
-            s2 = set()
-            for j in range(len(tempNums)):
-                if target - tempNums[j] in s2:
-                    s.add(tuple(sorted([-target, target - tempNums[j], tempNums[j]])))
-                s2.add(tempNums[j])
-        l = []
-        for elem in s:
-            l.append([*elem])
-        return l
+        res = []
+        nums.sort()
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i - 1]:
+                continue
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+        return res
