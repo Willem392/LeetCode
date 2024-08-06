@@ -1,5 +1,6 @@
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        # Turn these into sets so average is O(n) and worst is O(n^2)
         nums1 = set(nums1)
         nums2 = set(nums2)
         ans1 = set()
