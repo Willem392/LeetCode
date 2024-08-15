@@ -8,7 +8,6 @@ class Solution:
         while i < len(haystack):
             if haystack[i] == needle[j]:
                 while j < len(needle) and j + i < len(haystack):
-                    print(f"{haystack[i + j]}{i+j}, {needle[j]}{j}")
                     if haystack[i + j] != needle[j]:
                         break
                     j += 1
