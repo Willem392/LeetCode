@@ -3,7 +3,6 @@ class Solution:
         tmp = ''
         res = []
         for c in s:
-            print(c)
             if c != ' ':
                 tmp += c
             elif tmp != '':
