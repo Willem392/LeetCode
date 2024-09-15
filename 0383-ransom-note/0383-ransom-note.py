@@ -4,9 +4,7 @@ class Solution:
         for c in magazine:
             m[c] = m.get(c, 0) + 1
         for c in ransomNote:
-            if c not in m:
-                return False
-            if m[c] <= 0:
+            if c not in m or m[c] <= 0:
                 return False
             m[c] = m.get(c) - 1
         return True
